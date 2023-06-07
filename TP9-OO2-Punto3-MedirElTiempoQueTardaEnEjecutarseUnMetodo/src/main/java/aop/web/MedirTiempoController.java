@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import aop.domain.model.FabricaNombresAleatorios;
 import aop.domain.model.Time;
@@ -25,14 +24,30 @@ public class MedirTiempoController {
 
 	@RequestMapping("/registrar10nombres")
 	@Time
-	public String registrar10nombres() throws InfrastructureExceptions {
+	public void registrar10nombres() throws InfrastructureExceptions {
+
+		int cantidadPersonas = 10;
 
 		List<String> listaNombre = new ArrayList<String>();
 
-		generarNombres(listaNombre, 10);
+		generarNombres(listaNombre, cantidadPersonas);
 
 		guardarDato.registrar(listaNombre);
-		return "NASHEIIII";
+//		return "retorno";
+	}
+
+	@RequestMapping("/registrar100nombres")
+	@Time
+	public void registrar100nombres() throws InfrastructureExceptions {
+
+		int cantidadPersonas = 100;
+
+		List<String> listaNombre = new ArrayList<String>();
+
+		generarNombres(listaNombre, cantidadPersonas);
+
+		guardarDato.registrar(listaNombre);
+//		return "retorno";
 	}
 
 	private void generarNombres(List<String> listaNombre, int cantidadPersonas) {
@@ -44,14 +59,14 @@ public class MedirTiempoController {
 		}
 	}
 
-	@RequestMapping("/medirTiempo")
-	public String medirTiempo(@RequestParam("cantidadPersonas") int cantidadPersonas) throws InfrastructureExceptions {
-
-		List<String> listaNombre = new ArrayList<String>();
-
-		generarNombres(listaNombre, cantidadPersonas);
-
-		guardarDato.registrar(listaNombre);
-		return "NASHEIIII";
-	}
+//	@RequestMapping("/medirTiempo")
+//	public String medirTiempo(@RequestParam("cantidadPersonas") int cantidadPersonas) throws InfrastructureExceptions {
+//
+//		List<String> listaNombre = new ArrayList<String>();
+//
+//		generarNombres(listaNombre, cantidadPersonas);
+//
+//		guardarDato.registrar(listaNombre);
+//		return "yepa";
+//	}
 }

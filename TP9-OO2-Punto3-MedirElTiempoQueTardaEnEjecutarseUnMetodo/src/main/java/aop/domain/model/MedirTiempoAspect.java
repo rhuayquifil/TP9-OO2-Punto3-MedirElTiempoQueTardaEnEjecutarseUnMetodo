@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MedirTiempoAspect {
 
 	@Around("@annotation(Time)")
-	public Object aroundAdvice(ProceedingJoinPoint point) throws Throwable {
+	public void aroundAdvice(ProceedingJoinPoint point) throws Throwable {
 
 		long inicio = System.currentTimeMillis();
 		System.out.println("antes del proceso: " + inicio);
@@ -21,6 +21,6 @@ public class MedirTiempoAspect {
 		System.out.println("despues del proceso: " + fin);
 
 		System.out.println("final: " + (fin - inicio));
-		return fin - inicio;
+//		return fin - inicio;
 	}
 }
